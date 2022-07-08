@@ -64,8 +64,9 @@ function App() {
       </div>
       <div id="main" className="ml-56">
         <Routes>
-          <Route path="/" element={<Dashboard/>}/>
-          <Route path="/library" element={<Library/>}/>
+          <Route path="/" element={<Library/>}/>
+          {/* <Route path="/" element={<Dashboard/>}/>
+          <Route path="/library" element={<Library/>}/> */}
           {/* <Route path="/import-csv" exact component={ImportCSV}/>
           <Route path="/po" exact component={PurchaseOrder}/>
           <Route path="/po/create" exact component={CreatePO}/>
