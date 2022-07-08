@@ -65,6 +65,7 @@ function App() {
       <div id="main" className="ml-56">
         <Routes>
           <Route path="/" element={<Library/>}/>
+          <Route path="/dashboard" element={<Dashboard/>}/>
           {/* <Route path="/" element={<Dashboard/>}/>
           <Route path="/library" element={<Library/>}/> */}
           {/* <Route path="/import-csv" exact component={ImportCSV}/>
