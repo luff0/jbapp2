@@ -41,18 +41,24 @@ const CardDashboard = ({dataSales}) => {
     },[dataSales])
     
     return(
-        <div className=''>
-            <div className="border p-3">
-                <h3>{printRp(earnings)}</h3>
-                <h3>{printRp(margin)}</h3>
-                <h3>{printRp(transaction)}</h3>
-                <h3>{printRp(itemSold)}</h3>
+        <div className='grid grid-cols-4 gap-3 mb-6'>
+            <div className="border rounded-2xl">
+                <h4 className="bg-slate-200 p-2 rounded-t-2xl">Earnings</h4>
+                <h3 className='p-4'>{printRp(earnings)}</h3>
+            </div>
+            <div className="border rounded-2xl">
+                <h4 className="bg-slate-200 p-2 rounded-t-2xl">Margin</h4>
+                <h3 className='p-4'>{printRp(margin)}</h3>
+            </div>
+            <div className="border rounded-2xl">
+                <h4 className="bg-slate-200 p-2 rounded-t-2xl">Transaction</h4>
+                <h3 className='p-4'>{transaction}</h3>
+            </div>
+            <div className="border rounded-2xl">
+                <h4 className="bg-slate-200 p-2 rounded-t-2xl">Item Sold</h4>
+                <h3 className='p-4'>{itemSold}</h3>
             </div>
         </div>
-        // <Card.Title>{printRp(earnings)}</Card.Title>
-        // <Card.Title>{printRp(margin)}</Card.Title>
-        // <Card.Title>{transaction}</Card.Title>
-        // <Card.Title>{itemSold}</Card.Title>
     )
 }
 

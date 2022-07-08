@@ -81,7 +81,9 @@ const ChartLook = ({dataSales}) => {
     })
 
   return(
-    <ReactApexCharts options={options} series={series} type="line" height={350} />
+    <div className='mb-6'>
+      <ReactApexCharts options={options} series={series} type="line" height={350} />
+    </div>
   )
 }
 
