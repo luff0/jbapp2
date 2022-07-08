@@ -14,7 +14,7 @@ const Library = () => {
 	const dispatch = useDispatch()
 	let dataLibrary = useSelector(state => state.ProductListReducer)
 	const [filteredItems, setFilteredItems] = React.useState()
-	const [open, setOpen] = useState(true)
+	const [open, setOpen] = useState(false)
   	const cancelButtonRef = useRef(null)
 	const form = {sku:'', category:'', itemName:'', basicPrice:'', costAmount:'',stock:'', stockAlert:''}
 	const [dataTambah, setDataTambah] = useState(form)
