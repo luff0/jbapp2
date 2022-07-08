@@ -1,7 +1,7 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
-import {Dashboard} from './pages'
+import {Dashboard, Library} from './pages'
 import myAxios from './helpers/Request';
 import { useEffect } from 'react';
 
@@ -65,8 +65,8 @@ function App() {
       <div id="main" className="ml-56">
         <Routes>
           <Route path="/" element={<Dashboard/>}/>
-          {/* <Route path="/library" exact component={Library}/>
-          <Route path="/import-csv" exact component={ImportCSV}/>
+          <Route path="/library" element={<Library/>}/>
+          {/* <Route path="/import-csv" exact component={ImportCSV}/>
           <Route path="/po" exact component={PurchaseOrder}/>
           <Route path="/po/create" exact component={CreatePO}/>
           <Route path="/costumers" exact component={Costumers}/> */}

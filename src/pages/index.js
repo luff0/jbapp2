@@ -1,5 +1,5 @@
 import Dashboard from './Dashboard'
-// import Library from './Library'
+import Library from './Library'
 // import PurchaseOrder from './PurchaseOrder'
 // import Costumers from './Costumers'
 // import ImportCSV from './ImportCSV'
@@ -7,7 +7,7 @@ import Dashboard from './Dashboard'
 
 export {
     Dashboard,
-    // Library,
+    Library,
     // PurchaseOrder,
     // Costumers,
     // ImportCSV,
