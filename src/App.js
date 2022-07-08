@@ -1,7 +1,7 @@
 import './App.css';
-import { BrowserRouter as Router,Router as Switch, Route} from 'react-router-dom'
+// import { BrowserRouter as Router,Router as Switch, Route} from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
-import {Dashboard} from './pages'
+// import {Dashboard} from './pages'
 import myAxios from './helpers/Request';
 import { useEffect } from 'react';
 
