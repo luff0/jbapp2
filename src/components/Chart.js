@@ -44,11 +44,13 @@ const ChartLook = ({dataSales}) => {
   getXAxisMonth()
 
 
+  //eslint-disable-next-line
   const [series, setSeries] = useState([{
         name: "Penjualan",
         data: [10, 41, 35, 51, 49, 62, 69, 91, 148,69, 91, 148]
     }]
   )
+  //eslint-disable-next-line
   const [options, setOptions] = useState({
       chart: {
         height: 350,

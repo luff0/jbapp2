@@ -1,5 +1,5 @@
 import React from 'react'
-import {BestSeller, CardDashboard, ChartLook, DatePicker} from '../components'
+import {CardDashboard} from '../components'
 import {useSelector} from 'react-redux'
 
 

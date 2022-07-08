@@ -44,6 +44,9 @@ const CardDashboard = ({dataSales}) => {
         <div className=''>
             <div className="border p-3">
                 <h3>{printRp(earnings)}</h3>
+                <h3>{printRp(margin)}</h3>
+                <h3>{printRp(transaction)}</h3>
+                <h3>{printRp(itemSold)}</h3>
             </div>
         </div>
         // <Card.Title>{printRp(earnings)}</Card.Title>

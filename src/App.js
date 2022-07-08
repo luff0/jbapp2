@@ -1,7 +1,7 @@
 import './App.css';
-// import { BrowserRouter as Router,Router as Switch, Route} from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
-// import {Dashboard} from './pages'
+import {Dashboard} from './pages'
 import myAxios from './helpers/Request';
 import { useEffect } from 'react';
 
@@ -54,29 +54,25 @@ function App() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
   return (
-    // <Router>
-      <div className="App">
-        <div className="App">
-          <div id="mySidebar" className="h-full text-start fixed z-10 w-56 top-0 left-0 bg-slate-300 overflow-x-hidden pt-16 sidebar transition">
-            <a className="py-2 pl-8 pr-2 text-2xl text-slate-800 block transition hover:text-slate-900" href="/">Dashboard</a>
-            <a className="py-2 pl-8 pr-2 text-2xl text-slate-800 block transition hover:text-slate-900" href="/library">Library</a>
-            <a className="py-2 pl-8 pr-2 text-2xl text-slate-800 block transition hover:text-slate-900" href="/import-csv">Import CSV</a>
-            <a className="py-2 pl-8 pr-2 text-2xl text-slate-800 block transition hover:text-slate-900" href="/po">Purchase Order</a>
-            <a className="py-2 pl-8 pr-2 text-2xl text-slate-800 block transition hover:text-slate-900" href="/costumers">Costumers</a>
-          </div>
-          <div id="main" className="ml-56">
-            {/* <Switch>
-              <Route path="/" exact component={Dashboard}/> */}
-              {/* <Route path="/library" exact component={Library}/>
-              <Route path="/import-csv" exact component={ImportCSV}/>
-              <Route path="/po" exact component={PurchaseOrder}/>
-              <Route path="/po/create" exact component={CreatePO}/>
-              <Route path="/costumers" exact component={Costumers}/> */}
-            {/* </Switch> */}
-          </div>
-        </div>
+    <Router>
+      <div id="mySidebar" className="h-full text-start fixed z-10 w-56 top-0 left-0 bg-slate-300 overflow-x-hidden pt-16 sidebar transition">
+        <a className="py-2 pl-8 pr-2 text-2xl text-slate-800 block transition hover:text-slate-900" href="/">Dashboard</a>
+        <a className="py-2 pl-8 pr-2 text-2xl text-slate-800 block transition hover:text-slate-900" href="/library">Library</a>
+        <a className="py-2 pl-8 pr-2 text-2xl text-slate-800 block transition hover:text-slate-900" href="/import-csv">Import CSV</a>
+        <a className="py-2 pl-8 pr-2 text-2xl text-slate-800 block transition hover:text-slate-900" href="/po">Purchase Order</a>
+        <a className="py-2 pl-8 pr-2 text-2xl text-slate-800 block transition hover:text-slate-900" href="/costumers">Costumers</a>
       </div>
-    // </Router>
+      <div id="main" className="ml-56">
+        <Routes>
+          <Route path="/" element={<Dashboard/>}/>
+          {/* <Route path="/library" exact component={Library}/>
+          <Route path="/import-csv" exact component={ImportCSV}/>
+          <Route path="/po" exact component={PurchaseOrder}/>
+          <Route path="/po/create" exact component={CreatePO}/>
+          <Route path="/costumers" exact component={Costumers}/> */}
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
