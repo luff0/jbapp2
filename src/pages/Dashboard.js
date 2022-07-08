@@ -19,24 +19,6 @@ const Dashboard = () => {
 			<div>
 				<DatePicker/>
 			</div>
-			{/* <Container fluid>
-				<Row>
-					<Col md={8}>
-						<section className="card-dashbord">
-							<CardDashboard dataSales={dataSales}/>
-						</section>
-						<section className="cart">
-						</section>
-						<section className="best-seller">
-						</section>
-					</Col>
-					<Col md="auto">
-						<section className="date-picker">
-							<DatePicker/>
-						</section>
-					</Col>
-				</Row>
-			</Container> */}
 		</div>
 	)
 }
