@@ -30,6 +30,7 @@ const CreatePO = () => {
 		);
 		filterData = filterData.concat(dataLibrary.slice(0,10))
 		setFilteredItems(filterData.slice(0,10))
+		//eslint-disable-next-line
 	},[filterText])
 
 
@@ -80,7 +81,7 @@ const CreatePO = () => {
 											<input value={e.qty} onChange={(e)=>setFilterText(e.target.value)} type="number" name="price" id="price" className="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-3 pr-3 sm:text-sm border-gray-300 rounded-md"></input>
 										</div>
 									</td>
-									<td className='py-2'>{e.total}</td>
+									<td className='py-2'>{printRp(e.total)}</td>
 								</tr>
 							))
 						}
