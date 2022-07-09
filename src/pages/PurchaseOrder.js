@@ -39,18 +39,16 @@ const PurchaseOrder = () => {
 						<tr>
 							<th className="text-left text-xs py-2">Produk</th>
 							<th className="text-left text-xs py-2">Cost Amount</th>
-							<th className="text-left text-xs py-2">Price</th>
 							<th className="text-left text-xs py-2">Qty</th>
 							<th className="text-left text-xs py-2">Total</th>
 						</tr>
 					</thead>
 					<tbody>
 						{
-							data.productList.map(e => (
-								<tr className='text-xs'>
+							data.productList.map((e, i) => (
+								<tr key={i} className='text-xs'>
 									<td className='py-1'>{e.itemName}</td>
 									<td className='py-1'>{printRp(e.costAmount)}</td>
-									<td className='py-1'>{printRp(e.price)}</td>
 									<td className='py-1'>{e.qty}</td>
 									<td className='py-1'>{printRp(e.total)}</td>
 								</tr>
