@@ -3,9 +3,12 @@ import Papa from 'papaparse'
 import myAxios from '../helpers/Request'
 import DataTable from 'react-data-table-component';
 import { printRp } from '../helpers'
+import { CSVLink } from "react-csv";
+import {useSelector} from 'react-redux'
 
 
 const ImportCSV = () => {
+	let dataLibrary = useSelector(state => state.ProductListReducer)
 	const [dataCSV, setDataCSV] = useState([])
 	const inputHandle = e => {
 		Papa.parse(e.target.files[0], {
@@ -15,6 +18,11 @@ const ImportCSV = () => {
 			}
 		});
 	}
+
+	const exportCSV = dataLibrary.map(e =>{
+		return {_id:e._id, sku:e.sku, category:e.category, itemName:e.itemName,variantName:e.variantName, basicPrice:e.basicPrice, costAmount:e.costAmount, stock:e.stock, stockAlert:e.stockAlert}
+	})
+
 	const submit = () => {
 		myAxios.post('/library/item-library/import-csv',{data:dataCSV})
 		.then(res => {
@@ -70,6 +78,7 @@ const ImportCSV = () => {
 					</div>
 				</div>
 				</div>
+				<CSVLink style={{float:'right', color:'black'}} data={exportCSV}>Download Template</CSVLink>
 				<button
 					type="button"
 					onClick={submit}
