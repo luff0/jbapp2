@@ -38,6 +38,7 @@ const ImportCSV = () => {
 
 	return(
 		<div className="m-4">
+			<h2 className="text-2xl font-medium my-3">Import CSV</h2>
 			<div>
 				<div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
 					<div className="space-y-1 text-center">

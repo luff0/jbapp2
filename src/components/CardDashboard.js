@@ -42,20 +42,20 @@ const CardDashboard = ({dataSales}) => {
     
     return(
         <div className='grid grid-cols-4 gap-3 mb-6'>
-            <div className="border rounded-2xl">
-                <h4 className="bg-slate-200 p-2 rounded-t-2xl">Earnings</h4>
+            <div className="border rounded-xl">
+                <h4 className="bg-slate-200 p-2 rounded-t-xl">Earnings</h4>
                 <h3 className='p-4'>{printRp(earnings)}</h3>
             </div>
-            <div className="border rounded-2xl">
-                <h4 className="bg-slate-200 p-2 rounded-t-2xl">Margin</h4>
+            <div className="border rounded-xl">
+                <h4 className="bg-slate-200 p-2 rounded-t-xl">Margin</h4>
                 <h3 className='p-4'>{printRp(margin)}</h3>
             </div>
-            <div className="border rounded-2xl">
-                <h4 className="bg-slate-200 p-2 rounded-t-2xl">Transaction</h4>
+            <div className="border rounded-xl">
+                <h4 className="bg-slate-200 p-2 rounded-t-xl">Transaction</h4>
                 <h3 className='p-4'>{transaction}</h3>
             </div>
-            <div className="border rounded-2xl">
-                <h4 className="bg-slate-200 p-2 rounded-t-2xl">Item Sold</h4>
+            <div className="border rounded-xl">
+                <h4 className="bg-slate-200 p-2 rounded-t-xl">Item Sold</h4>
                 <h3 className='p-4'>{itemSold}</h3>
             </div>
         </div>
