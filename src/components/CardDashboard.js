@@ -8,37 +8,40 @@ const CardDashboard = ({dataSales}) => {
     const [itemSold, setItemSold] = useState(0)
     
     useEffect(()=>{
-        //Earnings counting
-        let totalEarnings = 0
-        dataSales.forEach(e=>{
-            e.itemList.forEach(f=>{
-                totalEarnings = totalEarnings + parseInt(f.total)
+        if(dataSales.dataSales){
+            //Earnings counting
+            let totalEarnings = 0
+            dataSales.dataSales.forEach(e=>{
+                e.itemList.forEach(f=>{
+                    totalEarnings = totalEarnings + parseInt(f.total)
+                })
             })
-        })
-        setEarnings(totalEarnings)
-
-        //SET MARGIN
-        let totalMargin = 0
-        dataSales.forEach(e=>{
-            e.itemList.forEach(f=>{
-                let marginItem = (parseInt(f.price) - parseInt(f.costAmount)) * f.qty
-                totalMargin = totalMargin + marginItem
+            setEarnings(totalEarnings)
+    
+            //SET MARGIN
+            let totalMargin = 0
+            dataSales.dataSales.forEach(e=>{
+                e.itemList.forEach(f=>{
+                    let marginItem = (parseInt(f.price) - parseInt(f.costAmount)) * f.qty
+                    totalMargin = totalMargin + marginItem
+                })
             })
-        })
-        setMargin(totalMargin)
-
-        //SET TRANSACTION
-        setTransaction(dataSales.length)
-
-        //SET ITEM SOLD
-        let totalItemSold = 0
-        dataSales.forEach(e=>{
-            e.itemList.forEach(f=>{
-                totalItemSold = totalItemSold + parseInt(f.qty)
+            setMargin(totalMargin)
+    
+            //SET TRANSACTION
+            setTransaction(dataSales.dataSales.length)
+    
+            //SET ITEM SOLD
+            let totalItemSold = 0
+            dataSales.dataSales.forEach(e=>{
+                e.itemList.forEach(f=>{
+                    totalItemSold = totalItemSold + parseInt(f.qty)
+                })
             })
-        })
-        setItemSold(totalItemSold)
-    },[dataSales])
+            setItemSold(totalItemSold)
+        }
+        // eslint-disable-next-line
+    },[dataSales.trigger])
     
     return(
         <div className='grid grid-cols-4 gap-3 mb-6'>

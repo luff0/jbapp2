@@ -25,7 +25,7 @@ const DatePicker = () => {
       if(res.data.status === 'success'){
         dispatch({
           type:'SET_DATA_SALES',
-          data:res.data.dataSales
+          data:{dataSales:res.data.dataSales, trigger:(Math.random() + 1).toString(36).substring(7)}
         })
       }
     })

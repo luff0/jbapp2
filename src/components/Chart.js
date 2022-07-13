@@ -1,10 +1,46 @@
 import React, { useEffect, useState } from 'react'
 import ReactApexCharts from 'react-apexcharts'
+import myAxios from '../helpers/Request'
 
 
-const ChartLook = ({dataSales}) => {
+const ChartLook = () => {
+  let start = new Date()
+  start.setDate(start.getDate() - 11)
+  let startChart = `${start.getFullYear()}-${start.getMonth()+1}-${start.getDate()}`
+  
+  let end  = new Date()
+  end.setDate(end.getDate() + 1)
+  let endChart = `${end.getFullYear()}-${end.getMonth()+1}-${end.getDate()}`
   useEffect(()=>{
-  },[dataSales])
+    myAxios.post("/sales/getallbytime",{start:startChart,end:endChart})
+    .then(res=>{
+      let salesChart = new Array(getXAxisDays().length).fill(0)
+      if(res.data.status === 'success'){
+        console.log(res.data.dataSales)
+        let xDate = new Date(res.data.dataSales[0].created_date).getDate()
+        let totalSales = 0
+        res.data.dataSales.forEach(sales => {
+          let created = new Date(sales.created_date)
+          if(created.getDate() !== xDate){
+            salesChart[getXAxisDays().findIndex(x => x === xDate)] = totalSales
+            xDate = created.getDate()
+            totalSales = 0
+          }
+          sales.itemList.forEach(item => {
+            totalSales = totalSales + item.qty
+          })
+        })
+        salesChart[getXAxisDays().findIndex(x => x === xDate)] = totalSales
+        setSeries([{
+          name: "Penjualan",
+          data: salesChart
+        }])
+      }
+    })
+    .catch(err=>console.log(err))
+    // eslint-disable-next-line
+  },[])
+
 
   const getXAxisDays = () => {
     const now = new Date();
@@ -37,7 +73,7 @@ const ChartLook = ({dataSales}) => {
       month.push(monthList[new Date(now.getFullYear(), now.getMonth() - i).getMonth()]);
       i--;
     } 
-    console.log(month)
+    // console.log(month)
     return month
   }
 
