@@ -27,6 +27,7 @@ const CreatePO = () => {
 		})
 		.catch(err => console.log(err))
 		setFilteredItems(dataLibrary.slice(0,10))
+		//eslint-disable-next-line
 	},[dataLibrary])
 
 	// const printDate = (x) => {

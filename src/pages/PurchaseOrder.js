@@ -23,6 +23,7 @@ const PurchaseOrder = () => {
 		}
 		})
 		.catch(err => console.log(err))
+		//eslint-disable-next-line
 	},[])
 
 	const printDate = (x) => {

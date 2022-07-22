@@ -19,6 +19,7 @@ const Costumers = () => {
 		})
 		.catch(err => console.log(err))
 		setFilteredItems(costumers)
+		//eslint-disable-next-line
 	},[costumers])
 	const columns = [
 		{name: 'Nama', selector: row => row.nama, width:'20%'},

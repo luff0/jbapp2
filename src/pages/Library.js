@@ -28,7 +28,8 @@ const Library = () => {
 			}
 		})
 		.catch(err => console.log(err))
-	})
+		//eslint-disable-next-line
+	},[])
 	useEffect(()=>{
 		setFilteredItems(dataLibrary)
 	},[dataLibrary])
