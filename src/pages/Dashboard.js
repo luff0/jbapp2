@@ -1,9 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {CardDashboard, DatePicker, ChartLook, BestSeller} from '../components'
 import {useSelector} from 'react-redux'
+import myAxios from '../helpers/Request'
+import { useNavigate } from 'react-router-dom'
 
 
 const Dashboard = () => {
+	const navigate = useNavigate()
+	useEffect(()=>{
+		myAxios.get('/users/cookie')
+		.then(res => {
+			if(!res.data.cookie){
+			  navigate('/login')
+			}
+		})
+		.catch(err => console.log(err))
+	})
 	const dataSales = useSelector(state=>state.DataSalesReducer)
 
 	return(

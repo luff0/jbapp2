@@ -1,13 +1,23 @@
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import DataTable from 'react-data-table-component';
+import { useNavigate } from 'react-router-dom';
+import myAxios from '../helpers/Request';
 
 const Costumers = () => {
 
 	const [filterText, setFilterText] = React.useState('');
 	const [filteredItems, setFilteredItems] = React.useState()
 	const costumers = useSelector(state => state.CostumerReducer)
+	const navigate = useNavigate()
 	useEffect(()=>{
+		myAxios.get('/users/cookie')
+		.then(res => {
+			if(!res.data.cookie){
+			  navigate('/login')
+			}
+		})
+		.catch(err => console.log(err))
 		setFilteredItems(costumers)
 	},[costumers])
 	const columns = [

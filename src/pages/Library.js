@@ -6,6 +6,7 @@ import { CSVLink } from "react-csv";
 import myAxios from '../helpers/Request'
 import DataTable from 'react-data-table-component';
 import { Dialog, Transition } from '@headlessui/react'
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -18,6 +19,16 @@ const Library = () => {
   	const cancelButtonRef = useRef(null)
 	const form = {sku:'', category:'', itemName:'', basicPrice:'', costAmount:'',stock:'', stockAlert:''}
 	const [dataTambah, setDataTambah] = useState(form)
+	const navigate = useNavigate()
+	useEffect(()=>{
+		myAxios.get('/users/cookie')
+		.then(res => {
+			if(!res.data.cookie){
+			  navigate('/login')
+			}
+		})
+		.catch(err => console.log(err))
+	})
 	useEffect(()=>{
 		setFilteredItems(dataLibrary)
 	},[dataLibrary])

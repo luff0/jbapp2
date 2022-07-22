@@ -1,11 +1,21 @@
 import React, { useEffect } from 'react'
 import DataTable from 'react-data-table-component';
+import { useNavigate } from 'react-router-dom';
 import { printRp } from '../helpers'
 import myAxios from '../helpers/Request';
 
 const PurchaseOrder = () => {
 	const [poList, setPoList] = React.useState([])
+    const navigate = useNavigate()
+
 	useEffect(()=>{
+		myAxios.get('/users/cookie')
+		.then(res => {
+			if(!res.data.cookie){
+			  navigate('/login')
+			}
+		})
+		.catch(err => console.log(err))
 		myAxios.get('/po/getAll')
 		.then(res => {
 		if(res.data.status === "success"){

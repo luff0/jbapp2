@@ -4,7 +4,7 @@ import myAxios from '../helpers/Request';
 import {useSelector} from 'react-redux'
 import { Dialog, Transition } from '@headlessui/react'
 import { printRp } from '../helpers';
-import {Navigate} from 'react-router-dom'
+import {Navigate, useNavigate} from 'react-router-dom'
 
 const CreatePO = () => {
 	const [poList, setPoList] = React.useState([])
@@ -17,7 +17,15 @@ const CreatePO = () => {
 	let dataLibrary = useSelector(state => state.ProductListReducer)
 
 	const [filteredItems, setFilteredItems] = React.useState([])
+	const navigate = useNavigate()
 	useEffect(()=>{
+		myAxios.get('/users/cookie')
+		.then(res => {
+			if(!res.data.cookie){
+			  navigate('/login')
+			}
+		})
+		.catch(err => console.log(err))
 		setFilteredItems(dataLibrary.slice(0,10))
 	},[dataLibrary])
 

@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Papa from 'papaparse'
 import myAxios from '../helpers/Request'
 import DataTable from 'react-data-table-component';
 import { printRp } from '../helpers'
 import { CSVLink } from "react-csv";
 import {useSelector} from 'react-redux'
+import { useNavigate } from 'react-router-dom';
 
 
 const ImportCSV = () => {
@@ -18,6 +19,17 @@ const ImportCSV = () => {
 			}
 		});
 	}
+
+	const navigate = useNavigate()
+	useEffect(()=>{
+		myAxios.get('/users/cookie')
+		.then(res => {
+			if(!res.data.cookie){
+			  navigate('/login')
+			}
+		})
+		.catch(err => console.log(err))
+	})
 
 	const exportCSV = dataLibrary.map(e =>{
 		return {_id:e._id, sku:e.sku, category:e.category, itemName:e.itemName,variantName:e.variantName, basicPrice:e.basicPrice, costAmount:e.costAmount, stock:e.stock, stockAlert:e.stockAlert}
