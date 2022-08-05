@@ -5,10 +5,10 @@ import DataTable from 'react-data-table-component';
 import { Dialog, Transition } from '@headlessui/react'
 import { useReactToPrint } from 'react-to-print';
 import { ComponentToPrint } from './ExportPdf';
+import { Link } from 'react-router-dom';
 
 export default function Report(){
 	//eslint-disable-next-line
-	const [penjualan, setPenjualan] = useState(false)
 	const [open, setOpen] = useState(false)
   	const cancelButtonRef = useRef(null)
 	const [poList, setPoList] = React.useState([])
@@ -24,7 +24,8 @@ export default function Report(){
 
 	React.useEffect(()=>{
 		getPO()
-	})
+	},[])
+
 
 	const printDate = (x) => {
 		var d = new Date(x);
@@ -38,13 +39,12 @@ export default function Report(){
 	const handlePrint = useReactToPrint({
 		content: () => componentRef.current,
 	});
-
 	const columns = [
-		// {name: 'PO id', selector: row => row.poId, width:'5%'},
+		{name: 'PO id', selector: row => row.poId, width:'5%'},
 		{name: 'Tgl', selector: row => row.date, width:'15%', format: row => printDate(row.date)},
 		{name: 'Sub-Total', selector: row => row.subTotal, width:'10%', format: row => printRp(row.subTotal)},
 		{name: 'Total', selector: row => row.total, width:'10%', format: row => printRp(row.total)},
-		{name: 'Vendor', selector: row => row.vendor.vendorName},
+		{name: 'Vendor', selector: row => row.vendor.vendorName || ''},
 		{name: 'PDF', selector: row => <p className="cursor-pointer hover:text-slate-400" onClick={()=>{setOpen(true);setContentPrint(row)}}>Export PDF</p>}
 	]
 
@@ -55,27 +55,19 @@ export default function Report(){
     return(
         <>
 		<div className="m-4">
-			<h2 className="text-2xl font-medium my-3">Report</h2>
+			<h2 className="text-2xl font-medium my-3">Report - Purchase Order</h2>
 			<div className='flex flex-row gap-x-2 my-3 items-center'>
-				<button
-					type="button"
-					// onClick={()=>{setOpen(true);setOnEdit(false);setDataTambah(form)}}
-					className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-					Penjualan
-				</button>
-				<button
-					type="button"
-					// onClick={()=>{setOpen(true);setOnEdit(false);setDataTambah(form)}}
-					className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-					Purchase Order
-				</button>
+				<Link to="/report/sales">
+					<button
+						type="button"
+						className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+						Penjualan
+					</button>
+				</Link>
 			</div>
-			{
-				penjualan?null:
 				<DataTable columns={columns} data={poList}
 					pagination
 				/>
-			}
         </div>
 		<Transition.Root show={open} as={Fragment}>
       <Dialog as="div" className="relative z-10" initialFocus={cancelButtonRef} onClose={setOpen}>

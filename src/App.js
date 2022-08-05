@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Report from './pages/Report';
+import ReportSales from './pages/child/ReportSales';
 
 function App() {
   const [cookie, setCookie] = useState(true)
@@ -76,7 +77,7 @@ function App() {
           <a className="py-2 pl-8 pr-2 text-md text-slate-800 block transition hover:text-slate-500" href="/import-csv">Import CSV</a>
           <a className="py-2 pl-8 pr-2 text-md text-slate-800 block transition hover:text-slate-500" href="/po">Purchase Order</a>
           <a className="py-2 pl-8 pr-2 text-md text-slate-800 block transition hover:text-slate-500" href="/costumers">Costumers</a>
-          <a className="py-2 pl-8 pr-2 text-md text-slate-800 block transition hover:text-slate-500" href="/report">Report</a>
+          <a className="py-2 pl-8 pr-2 text-md text-slate-800 block transition hover:text-slate-500" href="/report/sales">Report</a>
         </div>:null
       }
       <div id="main" className={logged?"ml-56":""}>
@@ -87,7 +88,8 @@ function App() {
           <Route path="/po" element={<PurchaseOrder/>}/>
           <Route path="/po/create" element={<CreatePO/>}/>
           <Route path="/costumers" element={<Costumers/>}/>
-          <Route path="/report" element={<Report/>}/>
+          <Route path="/report/sales" element={<ReportSales/>}/>
+          <Route path="/report/po" element={<Report/>}/>
           <Route path="/signup" element={<Signup/>}/>
           <Route path="/login" element={<Login/>}/>
         </Routes>
