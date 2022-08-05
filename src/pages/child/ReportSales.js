@@ -10,7 +10,6 @@ import { Dialog, Transition } from '@headlessui/react';
 export default function ReportSales(){
 	const [open, setOpen] = useState(false)
 	const cancelButtonRef = useRef(null)
-	const [contentPrint, setContentPrint] = useState({})
 	const componentRef = useRef();
 	const handlePrint = useReactToPrint({
 		content: () => componentRef.current,
