@@ -76,7 +76,7 @@ function App() {
           <a className="py-2 pl-8 pr-2 text-md text-slate-800 block transition hover:text-slate-500" href="/library">Library</a>
           <a className="py-2 pl-8 pr-2 text-md text-slate-800 block transition hover:text-slate-500" href="/import-csv">Import CSV</a>
           <a className="py-2 pl-8 pr-2 text-md text-slate-800 block transition hover:text-slate-500" href="/po">Purchase Order</a>
-          <a className="py-2 pl-8 pr-2 text-md text-slate-800 block transition hover:text-slate-500" href="/costumers">Costumers</a>
+          {/* <a className="py-2 pl-8 pr-2 text-md text-slate-800 block transition hover:text-slate-500" href="/costumers">Costumers</a> */}
           <a className="py-2 pl-8 pr-2 text-md text-slate-800 block transition hover:text-slate-500" href="/report/sales">Report</a>
         </div>:null
       }

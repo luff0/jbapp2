@@ -102,6 +102,12 @@ const CreatePO = () => {
 		setDataPO(dataPOClone)
 	}
 
+	const onPO = (e) => {
+		const dataPOClone = {...dataPo}
+		dataPOClone[e.target.name] = e.target.value
+		setDataPO(dataPOClone)
+	}
+
 	return(
 		<div className="m-4">
 			<h2 className="text-2xl font-medium my-3">Purchase Order</h2>
@@ -147,6 +153,14 @@ const CreatePO = () => {
 					</table>
 				</div>
 				<div className=''>
+					<div className="mt-1 relative rounded-md shadow-sm mb-4">
+						<div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+							<span className="text-gray-500 sm:text-sm">
+								Nomor PO
+							</span>
+						</div>
+						<input onChange={onPO} type="text" name="poId" id="price" className="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-24 pr-12 sm:text-sm border-0 rounded-md"></input>
+					</div>
 					<div className="mt-1 relative rounded-md shadow-sm mb-4">
 						<div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
 							<span className="text-gray-500 sm:text-sm">
