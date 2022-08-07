@@ -34,7 +34,7 @@ const PurchaseOrder = () => {
 	}
 
 	const columns = [
-		{name: 'PO id', selector: row => row.poId, width:'5%'},
+		{name: 'PO id', selector: row => row.poId, width:'10%'},
 		{name: 'Tgl', selector: row => row.date, width:'15%', format: row => printDate(row.date)},
 		{name: 'Sub-Total', selector: row => row.subTotal, width:'10%', format: row => printRp(row.subTotal)},
 		{name: 'Total', selector: row => row.total, width:'10%', format: row => printRp(row.total)},

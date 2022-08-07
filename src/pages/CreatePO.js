@@ -104,7 +104,7 @@ const CreatePO = () => {
 
 	const onPO = (e) => {
 		const dataPOClone = {...dataPo}
-		dataPOClone[e.target.name] = e.target.value
+		dataPOClone[e.target.name] = parseInt(e.target.value)
 		setDataPO(dataPOClone)
 	}
 
@@ -159,7 +159,7 @@ const CreatePO = () => {
 								Nomor PO
 							</span>
 						</div>
-						<input onChange={onPO} type="text" name="poId" id="price" className="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-24 pr-12 sm:text-sm border-0 rounded-md"></input>
+						<input onChange={onPO} type="number" name="poId" id="price" className="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-24 pr-12 sm:text-sm border-0 rounded-md"></input>
 					</div>
 					<div className="mt-1 relative rounded-md shadow-sm mb-4">
 						<div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
