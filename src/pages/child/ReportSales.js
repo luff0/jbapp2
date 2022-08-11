@@ -17,8 +17,9 @@ export default function ReportSales(){
 
 	const dateDefault = new Date()
 	const MM = ('0'+(dateDefault.getMonth()+1)).slice((dateDefault.getMonth()+1).length-2,(dateDefault.getMonth()+1).length)
-	const dd = ('0'+dateDefault.getDate()).slice((dateDefault.getDate()+1).length-2,(dateDefault.getDate()+1).length)
+	const dd = ('0'+dateDefault.getDate()).slice(1,3)
 	let date = `${dateDefault.getFullYear()}-${MM}-${dd}`
+	console.log(date)
 	const [dateSales, setDateSales] = React.useState(date)
 	const [salesTable, setSalesTable] = React.useState([])
 	React.useEffect(()=>{
@@ -34,7 +35,15 @@ export default function ReportSales(){
 			res.data.dataSales.forEach(transaksi => {
 				transaksi.itemList.forEach( item => {
 					let jam = new Date(transaksi.created_date)
-					data.push({itemName:item.itemName, total:item.total, shift: transaksi.shift.shiftName, jam:jam.getHours()+':'+(jam.getMinutes()+'0').slice(0,2)})
+
+					let cariIndex = data.findIndex(x => x.itemName === item.itemName) 
+                    if(cariIndex === -1){
+						data.push({itemName:item.itemName,qty:item.qty, total:item.total, shift: transaksi.shift.shiftName, jam:jam.getHours()+':'+(jam.getMinutes()+'0').slice(0,2)})
+                    }else{
+                        data[cariIndex].qty = data[cariIndex].qty + item.qty
+                        data[cariIndex].total = parseInt(data[cariIndex].total) + parseInt(item.total)
+                    } 
+
 				})
 			})
 			setSalesTable(data)
@@ -61,6 +70,7 @@ export default function ReportSales(){
 		{name: printDate(dateSales), selector: row => row.jam, width:'10%'},
 		{name: '', selector: row => row.shift, width:'15%'},
 		{name: '', selector: row => row.itemName},
+		{name: '', selector: row => row.qty},
 		{name: hitungTotal(salesTable), selector: row => printRp(row.total), width:'10%'},
 	]
 
