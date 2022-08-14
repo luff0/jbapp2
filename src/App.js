@@ -67,6 +67,17 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[cookie])
 
+  const logout = () => {
+    myAxios.get('/users/logout')
+    .then(res => {
+        if(res.data.status === 'success'){
+          window.location.reload();
+          setCookie(false)
+        }
+    })
+    .catch(err => console.log(err))
+  }
+
   return (
     <Router>
       {
@@ -78,6 +89,7 @@ function App() {
           <a className="py-2 pl-8 pr-2 text-md text-slate-800 block transition hover:text-slate-500" href="/po">Purchase Order</a>
           {/* <a className="py-2 pl-8 pr-2 text-md text-slate-800 block transition hover:text-slate-500" href="/costumers">Costumers</a> */}
           <a className="py-2 pl-8 pr-2 text-md text-slate-800 block transition hover:text-slate-500" href="/report/sales">Report</a>
+          <p className="py-2 pl-8 pr-2 text-md text-slate-800 block transition hover:text-slate-500" onClick={logout}>Logout</p>
         </div>:null
       }
       <div id="main" className={logged?"ml-56":""}>
